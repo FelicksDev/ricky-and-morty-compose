@@ -14,32 +14,29 @@ class HomeViewModel : ViewModel() {
     //retrofit
     private val retrofitInstance = RetrofitInstance()
     private val retrofitService: ApiService = retrofitInstance.service
+
     ///
+    private val _characters = MutableLiveData<List<Character>>()
+    val characters: LiveData<List<Character>> = _characters
 
-
-
+    init {
+        getCharacters()
+    }
     fun getCharacters(): List<Character> {
-        //no esta del todo bien ya que debe extraerse de la capa de data yno del viewmodel
+        //no esta del tdo bien ya que debe extraerse de la capa de data yno del viewmodel
 
         //Realizar validacions de errores
-        var charLista : List<Character> = emptyList();
+        var charLista: List<Character> = emptyList();
         viewModelScope.launch {
             // Realizar operaciones asíncronas, como hacer una solicitud de red
-           try {
-               // Almacenar en estado LiveData
-               val result = retrofitService.getCharacters()
-
-
-               // Actualizar los datos en el LiveData u otro medio de comunicación con la Vista
-
-//               val characterList : List<Character> = result.results
-//               Log.d("HomeViewModel", "fetchData: ${characterList[0]}")
-               //Si la consulta es succesfull
-
-
-           }catch (e: Exception){
-               Log.d("HomeViewModel", "Error: ${e.message}")
-           }
+            try {
+                // Almacenar en estado LiveData
+                val result = retrofitService.getCharacters()
+                _characters.value = result.results
+                // Actualizar los datos en el LiveData u otro medio de comunicación con la Vista
+            } catch (e: Exception) {
+                Log.d("HomeViewModel", "Error: ${e.message}")
+            }
 
         }
         return charLista

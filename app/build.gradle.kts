@@ -71,8 +71,10 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     // ViewModel and LiveData for MVVM architecture
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation ("androidx.lifecycle:lifecycle-livedata:2.7.0")
+    // Observe LiveData in Compose
+    implementation ("androidx.compose.runtime:runtime-livedata:1.6.7")
     // Coil for image loading
     implementation("io.coil-kt:coil-compose:2.6.0")
     // Corrutines
@@ -81,7 +83,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
 //    val coroutine_version = "1.8.0"
 
-
+//    Agregar librerias para extender iconos?
+    implementation("androidx.compose.material:material-icons-extended:1.6.7")
 
 
 
