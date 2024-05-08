@@ -34,10 +34,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.felicks.testcomposeproject.domain.model.Character
 import com.felicks.testcomposeproject.domain.model.Location
 import com.felicks.testcomposeproject.domain.model.Origin
+import com.felicks.testcomposeproject.navigation.AppScreens
 
 val rickSanchez: Character = Character(
     id = 1,
@@ -61,7 +63,7 @@ val rickSanchez: Character = Character(
 )
 
 @Composable
-fun CardView(personaje: Character, isExpanded: Boolean = false) {
+fun CardView(personaje: Character, isExpanded: Boolean = false, navController: NavController){
     //TODO Agregar logica para toogle usando un estado
     var expanded by remember { mutableStateOf(isExpanded) }
     Card(
@@ -92,14 +94,14 @@ fun CardView(personaje: Character, isExpanded: Boolean = false) {
                 ShowMoreButton(Modifier.padding(end=10.dp), expanded)
             }
         }
-        if (expanded) CardDetail(personaje = personaje)
+        if (expanded) CardDetail(personaje = personaje, navController)
 
 
     }
 }
 
 @Composable
-fun CardDetail(personaje: Character) {
+fun CardDetail(personaje: Character, navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -112,7 +114,11 @@ fun CardDetail(personaje: Character) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.End
         ) {
-            Button(onClick = { /* Acción de botón */ }) {
+            Button(onClick = {
+               
+                    navController.navigate(route = AppScreens.DetailScreen.route)
+
+            }) {
                 Text(text = "More")
             }
         }
@@ -144,7 +150,7 @@ fun ShowMoreButton(modifier: Modifier = Modifier, expanded: Boolean) {
 @Preview(showBackground = true)
 @Composable
 fun CardViewPreview() {
-    CardView(personaje = rickSanchez)
+//    CardView(personaje = rickSanchez, false, null)
 }
 
 @Composable

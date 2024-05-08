@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import com.felicks.testcomposeproject.domain.model.Character
+import com.felicks.testcomposeproject.navigation.AppNavigation
 import com.felicks.testcomposeproject.presentation.screens.MainScreen
 
 class MainActivity : ComponentActivity() {
@@ -14,7 +15,8 @@ class MainActivity : ComponentActivity() {
 
         super.onCreate(savedInstanceState)
         setContent {
-            MainScreen()
+//            MainScreen()
+            AppNavigation()
         }
 //        viewModel.getCharacters()
     }

@@ -1,15 +1,22 @@
 package com.felicks.testcomposeproject.presentation.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.typography
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -17,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.felicks.testcomposeproject.HomeViewModel
 import com.felicks.testcomposeproject.domain.model.Character
 import com.felicks.testcomposeproject.domain.model.Location
@@ -44,9 +52,12 @@ val rickSanchez: Character = Character(
     created = "2017-11-04T18:48:46.250Z"
 )
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@Preview(showBackground = true, showSystemUi = true)
-fun MainScreen() {
+fun MainScreen(
+    navController: NavController
+) {
     //TODO Agregar splash screen
     // Dentro de MainScreen
     var viewModel = HomeViewModel()
@@ -57,8 +68,30 @@ fun MainScreen() {
 //        Log.d("MainScreen", "Character: ${characters.name}")
 //    }
 //    Log.d("MainScreen", "Character: ${characters}")
+    // Mencionar en documentacion all esto
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.primary,
+                ),
 
-    Box {
+                title = {
+                    Text("Small Top App Bar")
+                }
+            )
+        },
+    ) {
+        innerPadding ->
+        BodyContent(characters, navController, innerPadding )
+    }
+
+}
+
+@Composable
+fun BodyContent(characters:List<Character>, navController: NavController, paddingValues: PaddingValues) {
+    Box(modifier = Modifier. padding(paddingValues)) {
         // TODO Mejorar diseño y hacer en funcion composable
 
         Column {
@@ -88,7 +121,8 @@ fun MainScreen() {
             LazyColumn {
                 items(characters.size) {
                     CardView(
-                        personaje = characters[it]
+                        //TODO: Se debe mandar el id para la siguiente screen
+                        personaje = characters[it], navController = navController
                     )
                 }
             }
