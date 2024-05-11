@@ -12,22 +12,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitInstance {
     private val BASE_URL = "https://rickandmortyapi.com/api/"
-
     val retrofitBuilder = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-//    private val retrofit = retrofitBuilder.build()
-//
-//    fun <S> createService(serviceClass: Class<S>?): S {
-//        return retrofit.create(serviceClass)
-//    }
     val service  = retrofitBuilder.create(ApiService::class.java)
 
 
 
 }
-//suspend fun main() {
-//    CoroutineScope(Dispatchers.Main.IO).launch {  }
-//}

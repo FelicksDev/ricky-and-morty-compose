@@ -73,6 +73,7 @@ dependencies {
     // ViewModel and LiveData for MVVM architecture
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation ("androidx.lifecycle:lifecycle-livedata:2.7.0")
+    implementation ("androidx.compose.runtime:runtime-livedata:1.6.7")
     // Observe LiveData in Compose
     implementation ("androidx.compose.runtime:runtime-livedata:1.6.7")
     // Coil for image loading
@@ -88,5 +89,8 @@ dependencies {
     // Compose Navigation
     val nav_version = "2.7.7"
     implementation("androidx.navigation:navigation-compose:$nav_version")
-
+    // Scaffold State
+    implementation ("com.google.android.material:material:1.12.0")
+    // Libreria Okhttp para retrofit
+//    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
 }

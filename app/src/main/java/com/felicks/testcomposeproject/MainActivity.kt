@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 //            MainScreen()
-            AppNavigation()
+            AppNavigation(viewModel)
         }
 //        viewModel.getCharacters()
     }
