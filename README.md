@@ -4,7 +4,8 @@ Mobile app for explore all Rick And Morty characters. App devolped with modern l
 Note: This app has been devolped with [Rick And Morty API](https://rickandmortyapi.com/)
 
 # Screenshots
-![Screens](https://github.com/FelicksDev/ricky-and-morty-compose/blob/main/screenshots.jpg)
+![Screens](https://raw.githubusercontent.com/FelicksDev/ricky-and-morty-compose/main/screenshots.jpg)
+
 
 
 ## Author
