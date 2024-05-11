@@ -1,11 +1,10 @@
-# Project Title
+# Ricky And Morty Compose App
 
 Mobile app for explore all Rick And Morty characters. App devolped with modern libraries from Android Jetpack, as Compose, Material Icons Extended and MVVM  architecture.
-Note: This app has been devolped with [Rick And Mort API](https://rickandmortyapi.com/)
+Note: This app has been devolped with [Rick And Morty API](https://rickandmortyapi.com/)
 
-# Proposed test
-![Challenge](https://placehold.co/600x400/EEE/31343C)
-
+# Screenshots
+![Screens](https://github.com/FelicksDev/ricky-and-morty-compose/blob/main/screenshots.jpg)
 
 
 ## Author
